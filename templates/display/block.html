@@ -1,0 +1,38 @@
+<div id="eventsBlockView">
+    <h2>Upcoming Events</h2>
+    <div class="blockRow" ng-repeat="event in staticEvents">
+        <div class="primary">
+            <h3>{{ event.date }}: {{ event.title }}</h3>
+            <p class="description">
+                {{ event.description | excerpt:75 }}
+            </p>
+            <a ng-href="{{ event.url }}" class="readMore">Read More</a>
+            <div class="clear"></div>
+        </div>
+        <div class="secondary">
+            <div class="title">Time:</div><div class="detail">{{ event.time }}</div>
+            <div class="title">Location:</div><div class="detail">{{ event.location }}</div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="blockRow" ng-repeat="event in events.list | filter: filterDropins | unique:'id' | orderBy: 'event.start':false | limitTo: 5">
+        <div class="primary">
+            <h3>{{ event.start | titleDate}}: {{ event.title }}</h3>
+            <p class="description">
+                {{ event.description | excerpt:75 }}
+            </p>
+            <a ng-href="{{ event.url }}" class="readMore">Read More</a>
+            <div class="clear"></div>
+        </div>
+        <div class="secondary">
+            <div class="title">Start:</div><div class="detail">{{ event.start | time }}</div>
+            <div class="title">End:</div><div class="detail">{{ event.end | time }}</div>
+            <div class="title">Location:</div><div class="detail">{{ event.location }}</div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</div>

@@ -1,0 +1,14 @@
+{
+  "apiKey": "",
+  "clientId": "",
+  "detailsPage": "http://iss.boisestate.edu/event-details/",
+  "calendars": [{
+      "name": "ISS Events",
+      "id": "[UNIQUE_ID_STRING]@group.calendar.google.com",
+      "visible": true
+    }],
+  "locations": [],
+  "eventTypes": [],
+  "staticCategories": [],
+  "staticEvents": []
+}

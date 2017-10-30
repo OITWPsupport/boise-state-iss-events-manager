@@ -1,0 +1,29 @@
+<div class="row" ng-hide="loading">
+    <div class="col-md-2">
+        <label>Select View Type:</label>
+
+        <div class="row">
+            <div class="col-md-12">
+                <select
+                    ng-model="viewType"
+                    class="form-control"
+                    ng-options="type.value as type.name for type in viewTypes"
+                    ng-change="createShortcode()"></select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr/>
+
+<div class="row">
+    <div class="col-md-6">
+        <label>Shortcode:</label>
+
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" class="form-control" ng-model="shortcode" select-on-click/>
+            </div>
+        </div>
+    </div>
+</div>

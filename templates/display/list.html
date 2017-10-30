@@ -1,0 +1,48 @@
+<div id="eventsFrontPage">
+
+    <div class="bsu_events_front_page eventsListHeader">
+        <div class="theTitle">Event</div>
+        <div class="theDates">Date</div>
+        <div class="theTime">Time</div>
+    </div>
+
+    <div class="bsuEventsRows">
+        <!--Static events-->
+        <div class="eventRow" ng-repeat="event in staticEvents">
+            <div class="theTitle firstCol">
+                <a ng-href="{{ event.url }}">
+                    <!--Allow for html chars-->
+                    <span ng-bind-html="event.title | trusted"></span>
+                </a>
+            </div>
+            <div class="theDates">
+                {{ event.date }}
+            </div>
+            <div class="theTime">
+                {{ event.time }}
+            </div>
+        </div>
+        <!--Non-static events-->
+        <div class="eventRow" ng-repeat="event in events.list | filter: filterDropins | unique:'id' | orderBy: 'event.start':false | limitTo: 5">
+            <div class="theTitle firstCol">
+                <a ng-href="{{ event.url }}">
+                    <!--Allow for html chars-->
+                    <span ng-bind-html="event.title | trusted"></span>
+                </a>
+                &nbsp;
+            </div>
+            <div class="theDates">
+                {{ event.startMoment.format('MMM Do') }}
+                &nbsp;
+            </div>
+            <div class="theTime">
+                {{ event.start | time }}
+                <span class="bsuEventsRecurringText" ng-show="event.recurrence.reoccurs">
+                    ({{ event.recurrence.days | recurrenceDays }})
+                </span>
+                &nbsp;
+            </div>
+        </div>
+    </div>
+
+</div>

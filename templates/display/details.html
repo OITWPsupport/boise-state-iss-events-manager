@@ -1,0 +1,60 @@
+<div ng-if="event">
+
+    <div class="bsuEventDetailHeader">
+        <h1>{{ event.title }}</h1>
+        <span class="calendarButtons">
+            <a ng-href="{{ event.googleCalUrl }}" ng-show="event.googleCalUrl" target="_blank" rel="nofollow">+ Google Calendar</a>
+        </span>
+    </div>
+
+    <div class="bsuEventDetailMain">
+        <div class="bsuEventDetails">
+            <ul class="list-unstyled">
+                <li ng-show="event.start" ng-hide="event.dateDescription">
+                    <div class="bsuEventDetailTitle">Date:</div>{{ event.start | fullDate }}
+                </li>
+                <li ng-show="event.dateDescription">
+                    <div class="bsuEventDetailTitle">Date:</div>
+                    <div class="eventDescription">
+                        <span ng-bind-html="event.dateDescription | trusted"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="bsuEventDetailTitle">Weekday(s):</div> {{ recurrence }}
+                </li>
+                <li ng-show="event.start">
+                    <div class="bsuEventDetailTitle">Time:</div>{{ event.start | time }} - {{ event.end | time }}
+                </li>
+                <li ng-show="event.duration">
+                    <div class="bsuEventDetailTitle">Duration:</div>{{ event.duration | minutesToTimeString }}
+                </li>
+                <li ng-show="event.location">
+                    <div class="bsuEventDetailTitle">Location:</div>
+                    <div class="bsuEventDetailLocation">
+                        <div ng-bind-html="event.location | trusted"></div>
+                    </div>
+                </li>
+                <li ng-show="event.registration.deadline">
+                    <div class="bsuEventDetailTitle">Register By:</div>{{ event.registration.deadline | fullDate }}
+                </li>
+                <li ng-show="sessionEndsOn">
+                    <div class="bsuEventDetailTitle">Session Ends:</div> {{ sessionEndsOn }}
+                </li>
+                <li>
+                    <div class="bsuEventDetailTitle" ng-show="event.fee">Fee:</div>
+                    {{ event.fee | fee }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="bsuEventDetailPost" ng-show="event.description">
+        <h3>Class Description</h3>
+        <p>
+            <span ng-bind-html="event.description | trusted"></span>
+        </p>
+    </div>
+</div>
+<div ng-show="noEventFound">
+    <h1>No event found</h1>
+</div>
